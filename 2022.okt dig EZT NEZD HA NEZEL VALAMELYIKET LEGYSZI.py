@@ -134,7 +134,7 @@ for i in l:
     elif int(i[0]) > int(i[1]):
         for j in range(int(i[0]),int(i[1]) + db):
                 if j < int(i[1]) + db:
-                    ultetes2.append(j)
+                    ultetes2.append([str(j), str(sz), str(i[2])])
 
                 elif j >= int(i[1]) + db:
                     ultetes2.append([str(j-db), str(sz), str(i[2])])
