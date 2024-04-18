@@ -90,7 +90,7 @@ print(f"A legtöbb jegyet a(z) {szamu}. kategóriában értékesítették.")
 
 print("5. feladat")
 
-ossz = egy*500 + ketto*4000 + harom*3000 + negy*2000 + ot*1500
+ossz = egy*5000 + ketto*4000 + harom*3000 + negy*2000 + ot*1500
 
 print(f"A színház bevétele {ossz} forint lenne.")
 
