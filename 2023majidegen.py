@@ -14,8 +14,6 @@ print("2. feladat")
 
 adatsor = int(input("Adja meg, melyik adatsorra kiváncsi! "))
 
-c = 0
-
 ind = l[adatsor-1][1]
 veg = l[adatsor-1][2]
 
@@ -28,7 +26,6 @@ def tav(szalaghossz, indulashelye, erkezeshelye):
 
     elif indulashelye > erkezeshelye:
         c = (szalaghossz - indulashelye) + erkezeshelye
-
 
     return c
 
@@ -50,9 +47,9 @@ for i in l:
     if tav(int(hossza),int(i[1]),int(i[2])) == m:
         osszes += str(c) + " "
 
-uts = len(osszes) - 1
+osszes = osszes.strip()
 
-print(f"A maximális távolságú szállítások sorszáma: {osszes[:uts]}")
+print(f"A maximális távolságú szállítások sorszáma: {osszes}")
 
 print("5. feladat")
 
@@ -69,18 +66,19 @@ print("6. feladat")
 
 idopont = int(input("Adja meg a kívánt időpontot! "))
 
-rekeszek = ""
+rekeszek = []
 c = 0
 
 for i in l:
     c += 1
     if (int(i[0]) + (tav(int(hossza),int(i[1]),int(i[2]))*int(ido))) > idopont and idopont > int(i[0]):
-        rekeszek += str(c) + " "
+        rekeszek.append(str(c))
 
-utso = len(rekeszek) -1
+
+rekeszek = " ".join(rekeszek)
 
 if rekeszek != "":
-    print(f"A szállított rekeszek halmaza: {rekeszek[:utso]}")
+    print(f"A szállított rekeszek halmaza: {rekeszek}")
 
 else:
     print("A szállított rekeszek halmaza: üres")
