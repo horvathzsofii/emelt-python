@@ -50,6 +50,17 @@ print(f"Az első vásárlás sorszáma: {sz}")
 
 sz = 0
 s = 0
+megjelenes = []
+for i in l:
+    s += 1
+    for j in i:
+        if j == arucikk:
+            megjelenes.append(s)
+
+print(f"Az utolsó vásárlás sorszáma: {megjelenes[-1]}")
+
+sz = 0
+s = 0
 
 for i in l:
     for j in i:
@@ -60,8 +71,6 @@ for i in l:
     if sz >= 1:
         s += 1
         sz = 0
-
-#nem tudom kitalálni hogy kell az utolsót
 
 print(f"{s} vásárlás során vettek belőle.")
 
@@ -82,7 +91,7 @@ def ertek(darabszamm):
 
     return ara
 
-print(f"{darabszam} vételekor fizetendő: {ertek(int(darabszam))}")
+print(f"{darabszam} darab vételekor fizetendő: {ertek(int(darabszam))}")
 
 print("7. feladat")
 
@@ -113,27 +122,30 @@ for i in aruk:
 for i in arukveglegesmostmar:
     print(i)
 
-print("8. feladat")
-
 sz = 0
 s = 0
 ossz = 0
+szamos = []
+vegleges = []
 
-
-
-with open("osszeg.txt", "w") as osszeg:
+with open("osszeg.txt","w") as osszeg:
+    targyak = []
     for i in l:
-        sz += 1
+        s += 1
         for j in i:
             for k in i:
-                if j == k:
-                    s += 1
+                if k == j:
+                    sz += 1
 
-            ossz += ertek(s)
+            if [sz,j] not in szamos:
+                szamos.append([sz,j])
+                sz = 0
+            else:
+                sz = 0
 
-        osszeg.write(f"{sz}: {ossz}")
-        osszeg.write("\n")
-        s = 0
+        for z in szamos:
+            ossz += ertek(z[0])
+
+        osszeg.write(f"{s}: {ossz}\n")
         ossz = 0
-
-#ismetlodik nem jo
+        szamos = []
